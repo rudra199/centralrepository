@@ -19,5 +19,10 @@ service 'httpd' do
 action [:enable,:start]
 end
 
+FROM ubuntu
+RUN echo "commit succesfull from Mumbai" >tmp/testfile
+EXPOSE 8080
+COPY dir3 /tmp
+
 
 
