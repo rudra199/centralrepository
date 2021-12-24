@@ -1,0 +1,23 @@
+FROM ubuntu
+RUN echo "welcome to our channel" >/tmp/testfile
+RUN apt-get update -y
+RUN apt-get install apache2 -y
+COPY dir1 /tmp
+ADD dir1.tar.gz /tmp
+WORKDIR /tmp
+
+package 'httpd' do
+action :install
+end
+
+file '/var/www/html/index.html'
+content "This is best idea to generate Chef"
+action :create
+end
+
+service 'httpd' do
+action [:enable,:start]
+end
+
+
+
